@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-int Search_in_File(char *fname, char *str)// formal args
+int findfunction(char *fname, char *str)// formal args
 {
 	FILE *fp;//file pointer
 	char temp[512];//to declare the string size
@@ -30,14 +30,14 @@ int Search_in_File(char *fname, char *str)// formal args
 }
 int main(int argc, char** argv)//
 {
-    char filename[200]="gcc -ffunction-sections -Wl,--gc-sections,--print-gc-sections ";
-    strcat(filename,argv[1]);//merge the filename and argv[1]
-    strcat(filename," 2> out.txt");//merge the file
-    const char *command = filename;//to initialize the filename to command pointer
+    char cmd[200]="gcc -ffunction-sections -Wl,--gc-sections,--print-gc-sections ";//find the function name
+    strcat(cmd,argv[1]);//merge the filename and argv[1]
+    strcat(cmd," 2> out.txt");//merge the file
+    const char *command =cmd;//to initialize the filename to command pointer
     FILE *fptr;//to create the text file
     fptr=fopen("unused.txt","w+");//to write and read the unused text file
-    system(command );
-    printf("The Unused functions in the project are:\n");
-    Search_in_File("unused.txt","text.");// actual args to passess to the function
+    system(command );//execting the command
+    printf("The notused function input file:\n");
+    findfunction("unused.txt","text.");// actual args to passess to the function
     return 0;
 }
